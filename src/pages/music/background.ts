@@ -1,18 +1,8 @@
 import * as Tone from "tone";
+import { bassSynth, chordSynth, percussionSynth, subBassSynth } from "./synths";
 
 export function ambience() {
   // percussion
-  const percussionSynth = new Tone.MembraneSynth({
-    pitchDecay: 0.008,
-    octaves: 2,
-    envelope: {
-      attack: 0.0006,
-      decay: 0.5,
-      sustain: 0,
-    },
-    volume: -7,
-  }).toDestination();
-
   const percussionPart = new Tone.Part(
     function (time, value) {
       percussionSynth.triggerAttackRelease(value.note, value.duration, time);
@@ -31,21 +21,6 @@ export function ambience() {
   percussionPart.loop = true;
 
   // sub bass
-  const subBassSynth = new Tone.AMSynth({
-    envelope: {
-      attack: 0.001,
-      decay: 0.2,
-    },
-    modulation: {
-      type: "square10",
-    },
-    modulationEnvelope: {
-      attack: 0.2,
-      decay: 0.01,
-    },
-    volume: -10,
-  }).toDestination();
-
   const subBassPart = new Tone.Part(
     function (time, value) {
       subBassSynth.triggerAttackRelease(value.note, value.duration, time);
@@ -57,27 +32,11 @@ export function ambience() {
   subBassPart.loop = true;
 
   // bass
-  const bassSynth = new Tone.FMSynth({
-    modulation: {
-      type: "triangle12",
-    },
-    modulationEnvelope: {
-      attack: 0.01,
-      decay: 0.4,
-    },
-    envelope: {
-      attack: 0.01,
-      decay: 0.2,
-      sustain: 0.4,
-    },
-    volume: -15,
-  }).toDestination();
-
   const bassPattern = new Tone.Pattern(
     function (time, note) {
       bassSynth.triggerAttackRelease(note, "8n", time);
     },
-    ["C2", "E2", "G2", "C3", "E3", "G3", "C4", "E4", "G4"],
+    ["C3", "D3", "D#3", "E3", "F#3", "G#3", "A#3", "C3", "D3", "D#3", "E3"],
     "randomWalk"
   ).start(0);
 
@@ -92,31 +51,15 @@ export function ambience() {
   }).start(0);
 
   // chords
-  const chordSynth = new Tone.PolySynth({
-    volume: -15,
-    options: {
-      oscillator: {
-        type: "fatsine3",
-        count: 3,
-        spread: 30,
-      },
-      envelope: {
-        attack: 0.01,
-        decay: 0.1,
-        sustain: 0.5,
-        release: 0.4,
-        attackCurve: "exponential",
-      },
-    },
-  }).toDestination();
-
   const chordPart = new Tone.Part(
     function (time, value) {
       chordSynth.triggerAttackRelease(value.notes, value.duration, time);
     },
     [
       { time: 0, notes: ["C3", "E3", "G3"], duration: "1n" },
-      { time: "0:2", notes: ["C3", "F3", "G3"], duration: "1n" },
+      { time: "1", notes: ["C3", "F3", "G3"], duration: "1n" },
+      { time: "2", notes: ["F3", "A3", "C3"], duration: "1n" },
+      { time: "3", notes: ["F3", "Bb3", "C3"], duration: "1n" },
     ]
   ).start(0);
 
