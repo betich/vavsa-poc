@@ -7,10 +7,7 @@ function AudioList() {
     data: audioData,
     error,
     isLoading,
-  } = useSWR<{ _id: string; songname: string }[]>(
-    "https://api-ex4.vercel.app/audio",
-    fetcher
-  );
+  } = useSWR<{ _id: string; songname: string }[]>("/audio", fetcher);
 
   const handleAudioClick = (filename: string) => {
     // Navigate to the audio detail page using React Router
