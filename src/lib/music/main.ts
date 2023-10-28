@@ -47,6 +47,12 @@ async function init() {
 
   await soundPromise;
 
+  randomizeTempo();
+  ambience();
+  setMajorScale();
+}
+
+function randomizeTempo() {
   // randomly change tempo from 80 to 100 to 120 every 4 measures
   const tempoPattern = new Tone.Pattern({
     callback: function (time, value) {
@@ -58,7 +64,36 @@ async function init() {
   }).start(0);
 
   Tone.Transport.start();
+}
 
-  ambience();
-  setMajorScale();
+async function exportAudio() {
+  // export as wav
+  const buffer = await Tone.Offline(() => {
+    ambience();
+    setMajorScale();
+  }, 5).then((buffer) => {
+    // save to file
+    download("music.wav", buffer.get());
+    return buffer;
+  });
+
+  // record for 30 seconds
+}
+
+function download(filename: string, data: AudioBuffer | undefined) {
+  if (!data) return;
+  const element = document.createElement("a");
+  // wav
+  const url = URL.createObjectURL(
+    new Blob([data.toString()], { type: "audio/wav" })
+  );
+  element.setAttribute("href", url);
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }

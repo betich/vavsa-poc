@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>เพลงผีบอก</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+  <style is:global>
+    html {
+      font-family: "Comic Sans MS", cursive; /* Playful font */
+    }
+    code {
+      font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .App {
+      text-align: center;
+    }
+
+    .App-logo {
+      height: 40vmin;
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+      }
+    }
+
+    .App-header {
+      background-color: #282c34;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: calc(10px + 2vmin);
+      color: white;
+    }
+
+    .App-link {
+      color: #61dafb;
+    }
+
+    /* Halloween theme */
+    .halloween-container {
+      background-color: #111; /* Dark background color */
+      color: #ff6600; /* Orange text color */
+      text-align: center;
+      font-family: "Bangers", sans-serif; /* Spooky font */
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .halloween-header {
+      font-size: 3rem;
+      text-shadow: 2px 2px 3px black; /* Add a shadow to text */
+    }
+
+    /* AudioList.css */
+    .audio-list-container {
+      background-color: #111; /* Dark background color */
+      color: #ff6600; /* Orange text color */
+      padding: 16px;
+      font-family: "Nosifer", sans-serif; /* Spooky font */
+    }
+
+    .audio-list-header {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .audio-item {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #ff6600;
+    }
+
+    .audio-item:hover {
+      background-color: #333; /* Darken the background on hover */
+    }
+
+    .navbar {
+      background-color: #000; /* Black background color */
+      color: #ff80ab; /* Pink text color */
+      text-align: center;
+      font-family: "Comic Sans MS", cursive; /* Playful font */
+      padding: 10px;
+    }
+
+    .halloween-input-melody {
+      background-color: #111; /* Dark background color */
+      color: #ff6600; /* Orange text color */
+      text-align: center;
+      font-family: "Bangers", sans-serif; /* Spooky font */
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Halloween-themed button */
+    .halloween-button {
+      background-color: #ff6600; /* Orange background color */
+      color: #111; /* Dark text color */
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 5px #000; /* Add shadow to the button */
+    }
+
+    .halloween-input {
+      background-color: #ff6600; /* Orange background color */
+      color: #000; /* Black text color */
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+      outline: none;
+    }
+
+    .halloween-input::placeholder {
+      color: #333; /* Dark gray placeholder text */
+    }
+
+    /* HalloweenReceipt.css */
+    .halloween-container {
+      background: url("https://cdn.pic.in.th/file/picinth/-random---.jpeg")
+        repeat; /* Use a paper texture image */
+      color: #ff6600; /* Orange text color */
+      text-align: center;
+      font-family: "Bangers", sans-serif; /* Spooky font */
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .halloween-header {
+      font-size: 3rem;
+      text-shadow: 2px 2px 3px black; /* Add a shadow to text */
+      background-color: transparent; /* Make the background transparent */
+      color: #ff6600; /* Orange text color */
+    }
+
+    @keyframes App-logo-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</html>

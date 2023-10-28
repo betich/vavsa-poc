@@ -1,18 +1,8 @@
 ---
+import AudioList from "../components/AudioList";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="เพลงผีบอก">
-  <main></main>
+<Layout>
+  <AudioList client:load />
 </Layout>
-
-<script src="./music/main">
-</script>
-
-
-<style>
-  body {
-    padding; 0;
-    margin: 0;
-  }
-</style>

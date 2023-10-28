@@ -1,0 +1,16 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import AudioDetail from "../../../components/AudioDetail";
+const { songId } = Astro.params;
+
+if (!songId) {
+  return {
+    statusCode: 404,
+    body: "Not found",
+  };
+}
+---
+
+<Layout>
+  <AudioDetail songId={songId} client:load />
+</Layout>
