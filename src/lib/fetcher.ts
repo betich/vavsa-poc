@@ -9,7 +9,7 @@ export const axiosClient = axios.create({
 });
 
 export const fetcher = async (url: string) => {
-  const res = await axios(url);
+  const res = await axiosClient(url);
   const data = await res.data;
   return data;
 };
